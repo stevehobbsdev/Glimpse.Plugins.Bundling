@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Glimpse.Plugins.Bundling</id>
+        <version>1.0.0</version>
+        <authors>Steve Hobbs</authors>
+        <owners>Steve Hobbs</owners>
+        <licenseUrl>https://raw.github.com/elkdanger/Glimpse.Plugins.Bundling/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/elkdanger/Glimpse.Plugins.Bundling</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Allows Glimpse users to view and diagnose Bundles, and see which are in use on the current page.</description>
+        <summary>A Glimpse pluging for Asp.Net Bundling</summary>
+        <releaseNotes />
+        <copyright>Copyright 2013</copyright>
+        <language>en-GB</language>
+        <tags>aspnet bundling glimpse plugin</tags>
+        <frameworkAssemblies>
+            <frameworkAssembly assemblyName="System.Web" targetFramework="net45" />
+        </frameworkAssemblies>
+    </metadata>
+    <files />
+</package>
