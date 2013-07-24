@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.Optimization;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Freelancer.Plugins.Glimpse.PluginHttpModule), "Start")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Glimpse.Plugins.Bundling.PluginHttpModule), "Start")]
 
 namespace Glimpse.Plugins.Bundling
 {
