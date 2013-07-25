@@ -14,3 +14,5 @@ what Orderer instance is being used.
 It is also possible to see which bundles have actually been included on the current page. These bundles are highlighed in green.
 
 No boilerplate code is necessary - simply install the package through Nuget, and rebuild.
+
+![Plugin Screenshot](https://raw.github.com/elkdanger/Glimpse.Plugins.Bundling/master/media/screenshot.jpg)
