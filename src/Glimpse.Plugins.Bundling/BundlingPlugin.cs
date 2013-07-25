@@ -35,7 +35,7 @@ namespace Glimpse.Plugins.Bundling
         /// <param name="context">The tab cotext instance</param>
         public override object GetData(ITabContext context)
         {
-            var plugin = Plugin.Create("Virtual Path", "Contents", "Type", "Orderer", "Url", "Cdn");
+            var plugin = Plugin.Create("Virtual Path", "Contents", "Type", "Orderer", "Transforms", "Cdn");
 
             foreach (var bundle in BundleTable.Bundles.OrderBy(c => c.Path))
             {
