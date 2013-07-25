@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".packageBuild", ".packageBu
 		..\..\packageBuild\nugetBuild.targets = ..\..\packageBuild\nugetBuild.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{87C120A2-A680-4C5F-AFB5-0865F5F4BBDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTest", "..\IntegrationTest\IntegrationTest.csproj", "{DAAF8EE0-7B9E-4F33-B0C1-9BE6DF46673B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +37,15 @@ Global
 		{33162B67-CD53-44EB-8CD9-2049DEBFB7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33162B67-CD53-44EB-8CD9-2049DEBFB7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33162B67-CD53-44EB-8CD9-2049DEBFB7CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAAF8EE0-7B9E-4F33-B0C1-9BE6DF46673B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAAF8EE0-7B9E-4F33-B0C1-9BE6DF46673B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAAF8EE0-7B9E-4F33-B0C1-9BE6DF46673B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAAF8EE0-7B9E-4F33-B0C1-9BE6DF46673B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DAAF8EE0-7B9E-4F33-B0C1-9BE6DF46673B} = {87C120A2-A680-4C5F-AFB5-0865F5F4BBDE}
 	EndGlobalSection
 EndGlobal

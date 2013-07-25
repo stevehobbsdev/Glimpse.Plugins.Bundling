@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Layout";
+}
+
+<html>
+	<head>
+		@Styles.Render("~/site/css")
+	</head>
+
+	<body>
+		<div id="content">
+			@RenderBody()
+		</div>
+		
+		@RenderSection("scripts", false)
+
+	</body>
+
+</html>
+
+
