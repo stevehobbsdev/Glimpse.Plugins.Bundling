@@ -76,7 +76,7 @@
   
   <Import Project="$(SolutionDir)\..\..\packageBuild\nugetBuild.targets" />
 
-  <PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <BuildDependsOn>
       $(BuildDependsOn);
       PackageBuild
