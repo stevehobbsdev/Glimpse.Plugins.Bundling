@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Web;
 using System.Web.Optimization;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
@@ -17,17 +16,12 @@ namespace Glimpse.Plugins.Bundling
 
         public void Init(HttpApplication context)
         {
-            context.BeginRequest += OnEndRequest;
-            context.EndRequest += OnBeginRequest;
+            context.BeginRequest += OnBeginRequest;
         }
 
         void OnBeginRequest(object sender, EventArgs e)
         {
             BundleResolver.Current = new GlimpsePluginBundleResolver(BundleResolver.Current);
-        }
-
-        void OnEndRequest(object sender, EventArgs e)
-        {
         }
 
         public void Dispose()
