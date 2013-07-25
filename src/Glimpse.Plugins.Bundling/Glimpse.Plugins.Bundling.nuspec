@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Glimpse.Plugins.Bundling</id>
-    <version>1.0.1</version>
+    <version>1.0.0</version>
     <authors>Steve Hobbs</authors>
     <owners>Steve Hobbs</owners>
     <licenseUrl>https://raw.github.com/elkdanger/Glimpse.Plugins.Bundling/master/LICENSE</licenseUrl>
@@ -20,8 +20,7 @@
       <dependency id="Glimpse" />
     </dependencies>
     <frameworkAssemblies>
-      <frameworkAssembly assemblyName="System.Web" targetFramework="net45" />
+      <frameworkAssembly assemblyName="System.Web" />
     </frameworkAssemblies>
   </metadata>
-  <files />
 </package>

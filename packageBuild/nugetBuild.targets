@@ -1,0 +1,66 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+	
+	<PropertyGroup>
+		
+		<Configuration Condition="'$(Configuration)'==''">Release</Configuration>
+
+		<ProjectName Condition=" '$(ProjectName)' == '' ">$(MSBuildProjectName)</ProjectName>
+
+		<BaseDir>$(MSBuildProjectDirectory)\..\..\</BaseDir>
+
+		<PackageBuildDir>$(BaseDir)packageBuild</PackageBuildDir>
+		<OutputPackageDir>$(PackageBuildDir)\outputPackages</OutputPackageDir>
+
+		<ProjectName Condition=" '$(ProjectName)' == '' ">$(MSBuildProjectName)</ProjectName>
+		<PackageLib>$(OutputPackageDir)\lib</PackageLib>
+		<BinaryName>$(ProjectName).dll</BinaryName>
+		<BinaryPath>$(SolutionDir)bin\$(Configuration)\$(BinaryName)</BinaryPath>
+
+		<NuspecFilename>$(ProjectName).nuspec</NuspecFilename>
+		<SourceNuspecDir>$(ProjectDir)</SourceNuspecDir>
+		<SourceNuspecFile>$(SourceNuspecDir)\$(NuspecFilename)</SourceNuspecFile>
+		<TargetNuspecFile>$(OutputPackageDir)\$(NuspecFilename)</TargetNuspecFile>
+
+		<MSBuildExtensions>$(PackageBuildDir)\MSBuild.Community.Tasks.dll</MSBuildExtensions>
+
+		<NugetPath Condition="'$(NugetPath)'==''">$(ProjectDir)\.nuget\nuget.exe</NugetPath>
+
+		<PushPackage Condition="'$(PushPackage)'==''">no</PushPackage>
+
+	</PropertyGroup>
+
+	<UsingTask AssemblyFile="$(MSBuildExtensions)" TaskName="MSBuild.Community.Tasks.Nuget.NugetPack" />
+
+	<Target Name="Clean">
+		<Message Text="Cleaning package directory..." />
+		<RemoveDir Directories="$(OutputPackageDir)" />
+	</Target>
+
+	<Target Name="PackageBuild" DependsOnTargets="Clean">
+
+		<!--<Message Text="$(SolutionDir)" />
+		<Message Text="$(BaseDir)" />
+		<Message Text="$(OutputPackageDir)" />
+    <Message Text="$(TargetNuspecFile)" />-->
+
+    <!-- Copy the .nuspec file -->
+    <Copy SourceFiles="$(SourceNuspecFile)" DestinationFolder="$(OutputPackageDir)" />
+
+    <!-- Copy the output binaries -->
+		<Copy SourceFiles="$(BinaryPath)" DestinationFolder="$(PackageLib)" />
+
+    <!-- Load the binary to get its version number -->
+    <GetAssemblyIdentity AssemblyFiles="$(BinaryPath)">
+      <Output TaskParameter="Assemblies" ItemName="AssemblyIdentities"/>
+    </GetAssemblyIdentity>
+
+    <!-- Create the nuget package -->
+    <NuGetPack
+      ToolPath="$(SolutionDir)\.nuget"
+      WorkingDirectory="$(OutputPackageDir)"
+      File="$(TargetNuspecFile)"
+      Version="%(AssemblyIdentities.Version)" />
+
+	</Target>
+
+</Project>
