@@ -64,7 +64,7 @@
   <ItemGroup>
     <Compile Include="BundlingPlugin.cs" />
     <Compile Include="GlimpsPluginBundleResolver.cs" />
-    <Compile Include="PluginHttpModule.cs" />
+    <Compile Include="GlimpseBundlePluginHttpModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,14 +73,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  
   <Import Project="$(SolutionDir)\..\..\packageBuild\nugetBuild.targets" />
-
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <BuildDependsOn>
       $(BuildDependsOn);
       PackageBuild
     </BuildDependsOn>
   </PropertyGroup>
-  
 </Project>
