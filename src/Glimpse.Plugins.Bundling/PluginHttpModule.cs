@@ -21,7 +21,10 @@ namespace Glimpse.Plugins.Bundling
 
         void OnBeginRequest(object sender, EventArgs e)
         {
-            BundleResolver.Current = new GlimpsePluginBundleResolver(BundleResolver.Current);
+            if (!(BundleResolver.Current is GlimpsePluginBundleResolver))
+            {
+                BundleResolver.Current = new GlimpsePluginBundleResolver(BundleResolver.Current);
+            }
         }
 
         public void Dispose()
