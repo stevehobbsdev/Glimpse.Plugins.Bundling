@@ -17,6 +17,8 @@ namespace IntegrationTest
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.Configure(BundleTable.Bundles);
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

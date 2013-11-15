@@ -29,7 +29,6 @@ namespace Glimpse.Plugins.Bundling
         /// Gets the bundle contents.
         /// </summary>
         /// <param name="virtualPath">The virtual path.</param>
-        /// <returns></returns>
         public IEnumerable<string> GetBundleContents(string virtualPath)
         {
             if (RequestedBundles.Contains(virtualPath) == false)
@@ -37,6 +36,15 @@ namespace Glimpse.Plugins.Bundling
                 RequestedBundles.Add(virtualPath);
             }
 
+            return this.Resolver.GetBundleContents(virtualPath);
+        }
+
+        /// <summary>
+        /// Gets the contents of the bundle straight from the underlying resolver.
+        /// </summary>
+        /// <param name="virtualPath">The virtual path</param>
+        public IEnumerable<string> GetBundleContentsFromResolver(string virtualPath)
+        {
             return this.Resolver.GetBundleContents(virtualPath);
         }
 

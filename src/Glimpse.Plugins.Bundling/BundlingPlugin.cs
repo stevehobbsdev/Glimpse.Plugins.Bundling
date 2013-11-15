@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Optimization;
 using Glimpse.Core.Extensibility;
 using Glimpse.Core.Tab.Assist;
@@ -40,15 +41,23 @@ namespace Glimpse.Plugins.Bundling
             foreach (var bundle in BundleTable.Bundles.OrderBy(c => c.Path))
             {
                 bool wasIncluded = false;
+                IEnumerable<string> bundleContents;
 
                 if (BundleResolver.Current is GlimpsePluginBundleResolver)
                 {
-                    wasIncluded = ((GlimpsePluginBundleResolver)BundleResolver.Current).RequestedBundles.Contains(bundle.Path);
+                    var resolver = (GlimpsePluginBundleResolver)BundleResolver.Current;
+
+                    wasIncluded = resolver.RequestedBundles.Contains(bundle.Path);
+                    bundleContents = resolver.GetBundleContentsFromResolver(bundle.Path);
+                }
+                else
+                {
+                    bundleContents = BundleResolver.Current.GetBundleContents(bundle.Path);
                 }
 
                 plugin.AddRow()
                     .Column(bundle.Path)
-                    .Column(BundleResolver.Current.GetBundleContents(bundle.Path))
+                    .Column(bundleContents)
                     .Column(bundle.GetType().Name)
                     .Column(bundle.Orderer.GetType().Name)
                     .Column(string.Join(", ", bundle.Transforms.Select(t => t.GetType().Name).ToArray()))
