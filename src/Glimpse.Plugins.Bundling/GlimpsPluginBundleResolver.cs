@@ -33,7 +33,10 @@ namespace Glimpse.Plugins.Bundling
         {
             if (RequestedBundles.Contains(virtualPath) == false)
             {
-                RequestedBundles.Add(virtualPath);
+                lock (this.RequestedBundles)
+                {
+                    RequestedBundles.Add(virtualPath);
+                }
             }
 
             return this.Resolver.GetBundleContents(virtualPath);
@@ -57,7 +60,10 @@ namespace Glimpse.Plugins.Bundling
         {
             if (RequestedBundles.Contains(virtualPath) == false)
             {
-                RequestedBundles.Add(virtualPath);
+                lock (this.RequestedBundles)
+                {
+                    RequestedBundles.Add(virtualPath);
+                }
             }
 
             return this.Resolver.GetBundleUrl(virtualPath);
