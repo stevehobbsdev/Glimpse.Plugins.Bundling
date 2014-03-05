@@ -15,7 +15,6 @@
     <language>en-GB</language>
     <tags>aspnet bundling glimpse plugin</tags>
     <dependencies>
-      <dependency id="WebActivatorEx" />
       <dependency id="Microsoft.AspNet.Web.Optimization" />
       <dependency id="Glimpse" />
     </dependencies>
