@@ -31,13 +31,7 @@ namespace Glimpse.Plugins.Bundling
         /// <param name="virtualPath">The virtual path.</param>
         public IEnumerable<string> GetBundleContents(string virtualPath)
         {
-            if (RequestedBundles.Contains(virtualPath) == false)
-            {
-                lock (this.RequestedBundles)
-                {
-                    RequestedBundles.Add(virtualPath);
-                }
-            }
+            this.TryRecordRequestedBundle(virtualPath);
 
             return this.Resolver.GetBundleContents(virtualPath);
         }
@@ -58,13 +52,7 @@ namespace Glimpse.Plugins.Bundling
         /// <returns></returns>
         public string GetBundleUrl(string virtualPath)
         {
-            if (RequestedBundles.Contains(virtualPath) == false)
-            {
-                lock (this.RequestedBundles)
-                {
-                    RequestedBundles.Add(virtualPath);
-                }
-            }
+            this.TryRecordRequestedBundle(virtualPath);
 
             return this.Resolver.GetBundleUrl(virtualPath);
         }
@@ -76,6 +64,23 @@ namespace Glimpse.Plugins.Bundling
         public bool IsBundleVirtualPath(string virtualPath)
         {
             return this.Resolver.IsBundleVirtualPath(virtualPath);
+        }
+
+        /// <summary>
+        /// Records the path of the bundle which has been requested
+        /// </summary>
+        private void TryRecordRequestedBundle(string virtualPath)
+        {
+            if (RequestedBundles.Contains(virtualPath) == false)
+            {
+                lock (this.RequestedBundles)
+                {
+                    if (RequestedBundles.Contains(virtualPath) == false)
+                    {
+                        RequestedBundles.Add(virtualPath);
+                    }
+                }
+            }
         }
     }
 }
